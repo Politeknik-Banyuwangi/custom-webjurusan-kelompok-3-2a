@@ -19,6 +19,23 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             SettingSeeder::class,
+            MenuSeeder::class,
+            PartnerSeeder::class,
+            DocumentTypeSeeder::class,
+            DocumentSeeder::class,
+            AchievementTypeSeeder::class,
+            AchievementLevelSeeder::class,
+            AchievementSeeder::class,
+            EventSeeder::class,
+            MetaTagSeeder::class,
+            PageSeeder::class,
+            EmployeeTypeSeeder::class,
+            EmployeeSeeder::class,
+            BannerSeeder::class,
+            CooperationFieldSeeder::class,
+            CooperationTypeSeeder::class,
+            CooperationSeeder::class,
+            AnnouncementSeeder::class
         ]);
     }
 }
