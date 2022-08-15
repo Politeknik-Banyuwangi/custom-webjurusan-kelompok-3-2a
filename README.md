@@ -1,4 +1,4 @@
 
-# Mlijo Mart and Grocery
+# Web Jurusan 
 
-Platform for buying and selling daily necessities
+Website Jurusan Teknik Informatika Politeknik Negeri Banyuwangi
