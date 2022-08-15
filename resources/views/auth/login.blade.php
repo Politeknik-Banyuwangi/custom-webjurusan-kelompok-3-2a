@@ -1,88 +1,48 @@
-<!DOCTYPE html>
-<html>
+<x-guest-layout>
+    <x-jet-authentication-card>
+        <x-slot name="logo">
+            <x-jet-authentication-card-logo />
+        </x-slot>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AMIK Medicom | Login</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
+        <x-jet-validation-errors class="mb-4" />
 
-
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo p-3">
-            <a href="{{ '/' }}">
-                <img src="{{ asset('assets/images/logo-top-1.png') }}" class="img img-responsive"
-                    style="width: auto; max-width: 80%;">
-            </a>
-        </div>
-        <div class="form-login">
-            <div class="login-card-body">
-                <div class="text-center">
-                    <p class="login-box-msg mb-3">Login into your Account</p>
-                </div>
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="input-group mb-4">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" placeholder="Email Address" required
-                            autocomplete="email" autofocus>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                        @error('email')
-                            <span class="text-danger">
-                                <p>{{ $message }}</p>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="input-group">
-                        <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password"
-                            placeholder="Password" required autocomplete="current-password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-key"></span>
-                            </div>
-                        </div>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
-                    </div>
-                    <div class="row justify-content-center mt-5">
-                        <!-- /.col -->
-                        <button type="submit" class="btn btn-login"> Log In</button>
-                        <!-- /.col -->
-                    </div>
-                </form>
+        @if (session('status'))
+            <div class="mb-4 font-medium text-sm text-green-600">
+                {{ session('status') }}
             </div>
-            <!-- /.login-card-body -->
-        </div>
-    </div>
-    <!-- /.login-box -->
+        @endif
 
-    <!-- jQuery -->
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-</body>
+            <div>
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            </div>
 
-</html>
+            <div class="mt-4">
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            </div>
+
+            <div class="block mt-4">
+                <label for="remember_me" class="flex items-center">
+                    <x-jet-checkbox id="remember_me" name="remember" />
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                </label>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+
+                <x-jet-button class="ml-4">
+                    {{ __('Log in') }}
+                </x-jet-button>
+            </div>
+        </form>
+    </x-jet-authentication-card>
+</x-guest-layout>
