@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
+use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
 use App\Http\Controllers\Web\Backend\User\UserController;
@@ -39,7 +40,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // Route for administrator
     Route::prefix('apps')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboards')->middleware('can:read-dashboards');
-        // Employee Type Route
+        // Employee Type
         Route::prefix('employee-types')->middleware('can:read-employee-types')->group(function () {
             Route::get('', [EmployeeTypeController::class, 'index'])->name('employee-types')->middleware('can:read-employee-types');
             Route::get('get-data', [EmployeeTypeController::class, 'getData'])->name('employee-types.get-data')->middleware('can:read-employee-types');
@@ -71,6 +72,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{user}/update', [UserController::class, 'update'])->name('users.update')->middleware('can:update-users');
             Route::delete('{user}/delete', [UserController::class, 'destroy'])->name('users.delete')->middleware('can:delete-users');
             Route::get('{user}/update-status', [UserController::class, 'updateStatus'])->name('users.updateStatus')->middleware('can:update-users');
+        });
+
+        // Settings
+        Route::prefix('settings')->middleware('can:read-settings')->group(function () {
+            Route::get('', [SettingController::class, 'index'])->name('settings');
+            Route::post('', [SettingController::class, 'update'])->middleware('can:update-settings')->name('api.settings');
         });
     });
 });

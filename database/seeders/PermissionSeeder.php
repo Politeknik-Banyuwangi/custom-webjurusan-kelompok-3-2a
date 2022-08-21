@@ -42,6 +42,9 @@ class PermissionSeeder extends Seeder
             ['name' => 'create-users', 'label' => 'Buat User'],
             ['name' => 'update-users', 'label' => 'Edit User'],
             ['name' => 'delete-users', 'label' => 'Hapus User'],
+            # Settings related permissions
+            ['name' => 'read-settings', 'label' => 'Akses Pengaturan'],
+            ['name' => 'update-settings', 'label' => 'Perbarui Pengaturan'],
         ]);
 
         $this->insertPermission($webPermission);

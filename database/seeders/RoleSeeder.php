@@ -31,6 +31,7 @@ class RoleSeeder extends Seeder
             'read-employee-types', 'create-employee-types', 'update-employee-types', 'delete-employee-types',
             'read-roles', 'create-roles', 'update-roles', 'delete-roles', 'change-permissions',
             'read-users', 'create-users', 'update-users', 'delete-users',
+            'read-settings', 'update-settings',
         ]);
         $adminsitrator->givePermissionTo([
             'read-dashboards',
@@ -38,6 +39,7 @@ class RoleSeeder extends Seeder
             'read-employee-types', 'create-employee-types', 'update-employee-types', 'delete-employee-types',
             'read-roles', 'create-roles', 'update-roles', 'delete-roles', 'change-permissions',
             'read-users', 'create-users', 'update-users', 'delete-users',
+            'read-settings', 'update-settings',
         ]);
     }
 }

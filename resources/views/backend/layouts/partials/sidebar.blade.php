@@ -140,12 +140,14 @@
             <li class="navigation-header">
                 <span>Setting</span>
             </li>
-            <li class=" nav-item">
-                <a data-toggle="ajax" href="#">
-                    <i class="feather icon-settings"></i>
-                    <span class="menu-item" data-i18n="Pengaturan">Pengaturan</span>
-                </a>
-            </li>
+            @can('read-settings')
+                <li class=" nav-item">
+                    <a data-toggle="ajax" href="{{ route('settings') }}">
+                        <i class="feather icon-settings"></i>
+                        <span class="menu-item" data-i18n="Pengaturan">Pengaturan</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </div>
 </div>
