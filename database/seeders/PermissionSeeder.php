@@ -20,6 +20,16 @@ class PermissionSeeder extends Seeder
         $webPermission = collect([
             # Dashboard related permission
             ['name' => 'read-dashboards', 'label' => 'Baca Dashboard'],
+            # Employee related permission
+            ['name' => 'read-employees', 'label' => 'Baca Staff'],
+            ['name' => 'create-employees', 'label' => 'Buat Staff'],
+            ['name' => 'update-employees', 'label' => 'Update Staff'],
+            ['name' => 'delete-employees', 'label' => 'Hapus Staff'],
+            # Employee type related permission
+            ['name' => 'read-employee-types', 'label' => 'Baca Jenis Staff'],
+            ['name' => 'create-employee-types', 'label' => 'Buat Jenis Staff'],
+            ['name' => 'update-employee-types', 'label' => 'Update Jenis Staff'],
+            ['name' => 'delete-employee-types', 'label' => 'Hapus Jenis Staff'],
         ]);
 
         $this->insertPermission($webPermission);

@@ -25,9 +25,13 @@ class RoleSeeder extends Seeder
         // Give permission to role
         $developer->givePermissionTo([
             'read-dashboards',
+            'read-employees', 'create-employees', 'update-employees', 'delete-employees',
+            'read-employee-types', 'create-employee-types', 'update-employee-types', 'delete-employee-types',
         ]);
         $adminsitrator->givePermissionTo([
             'read-dashboards',
+            'read-employees', 'create-employees', 'update-employees', 'delete-employees',
+            'read-employee-types', 'create-employee-types', 'update-employee-types', 'delete-employee-types',
         ]);
     }
 }
