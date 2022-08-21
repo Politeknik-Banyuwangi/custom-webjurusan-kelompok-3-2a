@@ -121,10 +121,12 @@
             <li class="nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
                         data-i18n="Manajemen User">Manajemen User</span></a>
                 <ul class="menu-content">
-                    <li><a href="#" data-toggle="ajax">
-                            <i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Roles">Roles</span></a>
-                    </li>
+                    @can('read-roles')
+                        <li><a href="{{ route('roles') }}" data-toggle="ajax">
+                                <i class="feather icon-circle"></i><span class="menu-item"
+                                    data-i18n="Roles">Roles</span></a>
+                        </li>
+                    @endcan
                     <li><a href="#" data-toggle="ajax">
                             <i class="feather icon-circle"></i><span class="menu-item"
                                 data-i18n="User">User</span></a>

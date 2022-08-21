@@ -16,10 +16,12 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $developer = Role::create([
-            'name' => 'Developer'
+            'name' => 'Developer',
+            'is_default' => true
         ]);
         $adminsitrator = Role::create([
-            'name' => 'Administrator'
+            'name' => 'Administrator',
+            'is_default' => false
         ]);
 
         // Give permission to role
@@ -27,11 +29,13 @@ class RoleSeeder extends Seeder
             'read-dashboards',
             'read-employees', 'create-employees', 'update-employees', 'delete-employees',
             'read-employee-types', 'create-employee-types', 'update-employee-types', 'delete-employee-types',
+            'read-roles', 'create-roles', 'update-roles', 'delete-roles', 'change-permissions',
         ]);
         $adminsitrator->givePermissionTo([
             'read-dashboards',
             'read-employees', 'create-employees', 'update-employees', 'delete-employees',
             'read-employee-types', 'create-employee-types', 'update-employee-types', 'delete-employee-types',
+            'read-roles', 'create-roles', 'update-roles', 'delete-roles', 'change-permissions',
         ]);
     }
 }

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
+use App\Http\Controllers\Web\Backend\User\PermissionController;
+use App\Http\Controllers\Web\Backend\User\RoleController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +46,18 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('{employeeType}/show', [EmployeeTypeController::class, 'show'])->name('employee-types.update')->middleware('can:update-employee-types');
             Route::post('{employeeType}/update', [EmployeeTypeController::class, 'update'])->name('employee-types.update')->middleware('can:update-employee-types');
             Route::delete('{employeeType}/delete', [EmployeeTypeController::class, 'destroy'])->name('employee-types.delete')->middleware('can:delete-employee-types');
+        });
+
+        // Roles
+        Route::prefix('roles')->middleware('can:read-roles')->group(function () {
+            Route::get('', [RoleController::class, 'index'])->name('roles');
+            Route::get('getData', [RoleController::class, 'getData'])->name('roles.get-data');
+            Route::post('store', [RoleController::class, 'store'])->name('roles.store')->middleware('can:create-roles');
+            Route::get('{role}/show', [RoleController::class, 'show'])->name('roles.update')->middleware('can:update-roles');
+            Route::post('{role}/update', [RoleController::class, 'update'])->name('roles.update')->middleware('can:update-roles');
+            Route::delete('{role}/delete', [RoleController::class, 'destroy'])->name('roles.delete')->middleware('can:delete-roles');
+            Route::get('{role}/change-permission', [PermissionController::class, 'index'])->name('roles.change-permissions');
+            Route::post('{role}/update-permission', [PermissionController::class, 'changePermission'])->name('roles.update-permission')->middleware('can:change-permissions');
         });
     });
 });

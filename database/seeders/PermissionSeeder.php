@@ -20,6 +20,12 @@ class PermissionSeeder extends Seeder
         $webPermission = collect([
             # Dashboard related permission
             ['name' => 'read-dashboards', 'label' => 'Baca Dashboard'],
+            # Roles related permission
+            ['name' => 'read-roles', 'label' => 'Baca Role'],
+            ['name' => 'create-roles', 'label' => 'Buat Role'],
+            ['name' => 'update-roles', 'label' => 'Update Role'],
+            ['name' => 'delete-roles', 'label' => 'Hapus Role'],
+            ['name' => 'change-permissions', 'label' => 'Edit Hak Akses'],
             # Employee related permission
             ['name' => 'read-employees', 'label' => 'Baca Staff'],
             ['name' => 'create-employees', 'label' => 'Buat Staff'],
