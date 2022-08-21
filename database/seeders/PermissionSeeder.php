@@ -36,6 +36,12 @@ class PermissionSeeder extends Seeder
             ['name' => 'create-employee-types', 'label' => 'Buat Jenis Staff'],
             ['name' => 'update-employee-types', 'label' => 'Update Jenis Staff'],
             ['name' => 'delete-employee-types', 'label' => 'Hapus Jenis Staff'],
+
+            # Users related permission
+            ['name' => 'read-users', 'label' => 'Baca User'],
+            ['name' => 'create-users', 'label' => 'Buat User'],
+            ['name' => 'update-users', 'label' => 'Edit User'],
+            ['name' => 'delete-users', 'label' => 'Hapus User'],
         ]);
 
         $this->insertPermission($webPermission);

@@ -118,6 +118,8 @@
                     <span class="menu-item" data-i18n="SEO">SEO</span>
                 </a>
             </li>
+            @canany(['read-users', 'read-roles'])
+            @endcanany
             <li class="nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
                         data-i18n="Manajemen User">Manajemen User</span></a>
                 <ul class="menu-content">
@@ -127,10 +129,12 @@
                                     data-i18n="Roles">Roles</span></a>
                         </li>
                     @endcan
-                    <li><a href="#" data-toggle="ajax">
-                            <i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="User">User</span></a>
-                    </li>
+                    @can('read-users')
+                        <li><a href="{{ route('users') }}" data-toggle="ajax">
+                                <i class="feather icon-circle"></i><span class="menu-item"
+                                    data-i18n="User">User</span></a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
             <li class="navigation-header">

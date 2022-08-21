@@ -4,6 +4,7 @@ use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
+use App\Http\Controllers\Web\Backend\User\UserController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,18 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::delete('{role}/delete', [RoleController::class, 'destroy'])->name('roles.delete')->middleware('can:delete-roles');
             Route::get('{role}/change-permission', [PermissionController::class, 'index'])->name('roles.change-permissions');
             Route::post('{role}/update-permission', [PermissionController::class, 'changePermission'])->name('roles.update-permission')->middleware('can:change-permissions');
+        });
+
+        // Users
+        Route::prefix('users')->middleware('can:read-users')->group(function () {
+            Route::get('', [UserController::class, 'index'])->name('users');
+            Route::get('getData', [UserController::class, 'getData'])->name('users.get-data');
+            Route::get('create', [UserController::class, 'create'])->name('users.create')->middleware('can:create-users');
+            Route::post('store', [UserController::class, 'store'])->name('users.store')->middleware('can:create-users');
+            Route::get('{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('can:update-users');
+            Route::post('{user}/update', [UserController::class, 'update'])->name('users.update')->middleware('can:update-users');
+            Route::delete('{user}/delete', [UserController::class, 'destroy'])->name('users.delete')->middleware('can:delete-users');
+            Route::get('{user}/update-status', [UserController::class, 'updateStatus'])->name('users.updateStatus')->middleware('can:update-users');
         });
     });
 });
