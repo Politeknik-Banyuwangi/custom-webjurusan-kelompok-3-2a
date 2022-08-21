@@ -36,6 +36,16 @@ class PermissionSeeder extends Seeder
             ['name' => 'create-employee-types', 'label' => 'Buat Jenis Staff'],
             ['name' => 'update-employee-types', 'label' => 'Update Jenis Staff'],
             ['name' => 'delete-employee-types', 'label' => 'Hapus Jenis Staff'],
+            # Achievement type related permission
+            ['name' => 'read-achievement-types', 'label' => 'Baca Jenis Prestasi'],
+            ['name' => 'create-achievement-types', 'label' => 'Buat Jenis Prestasi'],
+            ['name' => 'update-achievement-types', 'label' => 'Update Jenis Prestasi'],
+            ['name' => 'delete-achievement-types', 'label' => 'Hapus Jenis Prestasi'],
+            # Achievement level related permission
+            ['name' => 'read-achievement-levels', 'label' => 'Baca Tingkat Prestasi'],
+            ['name' => 'create-achievement-levels', 'label' => 'Buat Tingkat Prestasi'],
+            ['name' => 'update-achievement-levels', 'label' => 'Update Tingkat Prestasi'],
+            ['name' => 'delete-achievement-levels', 'label' => 'Hapus Tingkat Prestasi'],
 
             # Users related permission
             ['name' => 'read-users', 'label' => 'Baca User'],

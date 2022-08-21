@@ -1,40 +1,40 @@
 <?php
 
-namespace App\Http\Controllers\Web\Backend\Employee;
+namespace App\Http\Controllers\Web\Backend\Achievement;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\Backend\Employee\EmployeeTypeRequest;
-use App\Models\EmployeeType;
+use App\Http\Requests\Web\Backend\Achievement\AchievementLevelRequest;
+use App\Models\AchievementLevel;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Vinkla\Hashids\Facades\Hashids;
 use Yajra\DataTables\DataTables;
 
-class EmployeeTypeController extends Controller
+class AchievementLevelController extends Controller
 {
     public function index()
     {
         $data = [
-            'title' => 'Jenis Staff',
-            'mods' => 'employee_type'
+            'title' => 'Tingkat Prestasi',
+            'mods' => 'achievement_level'
         ];
 
-        return customView('employee_type.index', $data, 'backend');
+        return customView('achievement_level.index', $data, 'backend');
     }
 
     public function getData()
     {
-        return DataTables::of(EmployeeType::query())->addColumn('hashid', function ($data) {
+        return DataTables::of(AchievementLevel::query())->addColumn('hashid', function ($data) {
             return Hashids::encode($data->id);
         })->make(true);
     }
 
-    public function show(EmployeeType $employeeType)
+    public function show(AchievementLevel $achievementLevel)
     {
         try {
             return response()->json([
                 'success' => true,
-                'data' => $employeeType
+                'data' => $achievementLevel
             ]);
         } catch (Exception $e) {
             return response()->json([
@@ -44,10 +44,10 @@ class EmployeeTypeController extends Controller
         }
     }
 
-    public function store(EmployeeTypeRequest $request)
+    public function store(AchievementLevelRequest $request)
     {
         try {
-            EmployeeType::create($request->only(['name']));
+            AchievementLevel::create($request->only(['name']));
             return response()->json([
                 'message' => 'Data telah ditambahkan'
             ]);
@@ -59,10 +59,10 @@ class EmployeeTypeController extends Controller
         }
     }
 
-    public function update(EmployeeTypeRequest $request, EmployeeType $employeeType)
+    public function update(AchievementLevelRequest $request, AchievementLevel $achievementLevel)
     {
         try {
-            $employeeType->update($request->only(['name']));
+            $achievementLevel->update($request->only(['name']));
             return response()->json([
                 'message' => 'Data telah diubah'
             ]);
@@ -74,10 +74,10 @@ class EmployeeTypeController extends Controller
         }
     }
 
-    public function destroy(EmployeeType $employeeType)
+    public function destroy(AchievementLevel $achievementLevel)
     {
         try {
-            $employeeType->delete();
+            $achievementLevel->delete();
             return response()->json([
                 'message' => 'Data telah dihapus',
             ]);

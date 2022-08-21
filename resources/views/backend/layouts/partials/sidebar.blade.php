@@ -21,23 +21,29 @@
             <li class="navigation-header">
                 <span>Master Data</span>
             </li>
-            <li class="nav-item"><a href="#"><i class="feather icon-award"></i><span class="menu-title"
-                        data-i18n="Prestasi">Prestasi</span></a>
-                <ul class="menu-content">
-                    <li><a href="#" data-toggle="ajax">
-                            <i class="feather icon-circle"></i><span class="menu-item" data-i18n="Jenis Prestasi">Jenis
-                                Prestasi</span></a>
-                    </li>
-                    <li><a href="#" data-toggle="ajax">
-                            <i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Tingkat Prestasi">Tingkat Prestasi</span></a>
-                    </li>
-                    <li><a href="#" data-toggle="ajax">
-                            <i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Prestasi Mahasiswa">Prestasi Mahasiswa</span></a>
-                    </li>
-                </ul>
-            </li>
+            @canany(['read-achievement-levels', 'read-achievement-types'])
+                <li class="nav-item"><a href="#"><i class="feather icon-award"></i><span class="menu-title"
+                            data-i18n="Prestasi">Prestasi</span></a>
+                    <ul class="menu-content">
+                        @can('read-achievement-types')
+                            <li><a href="{{ route('achievement-types') }}" data-toggle="ajax">
+                                    <i class="feather icon-circle"></i><span class="menu-item" data-i18n="Jenis Prestasi">Jenis
+                                        Prestasi</span></a>
+                            </li>
+                        @endcan
+                        @can('read-achievement-levels')
+                            <li><a href="{{ route('achievement-levels') }}" data-toggle="ajax">
+                                    <i class="feather icon-circle"></i><span class="menu-item"
+                                        data-i18n="Tingkat Prestasi">Tingkat Prestasi</span></a>
+                            </li>
+                        @endcan
+                        <li><a href="#" data-toggle="ajax">
+                                <i class="feather icon-circle"></i><span class="menu-item"
+                                    data-i18n="Prestasi Mahasiswa">Prestasi Mahasiswa</span></a>
+                        </li>
+                    </ul>
+                </li>
+            @endcanany
             <li class="nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title"
                         data-i18n="Arsip Dokumen">Arsip Dokumen</span></a>
                 <ul class="menu-content">
