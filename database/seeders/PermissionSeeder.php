@@ -46,6 +46,21 @@ class PermissionSeeder extends Seeder
             ['name' => 'create-achievement-levels', 'label' => 'Buat Tingkat Prestasi'],
             ['name' => 'update-achievement-levels', 'label' => 'Update Tingkat Prestasi'],
             ['name' => 'delete-achievement-levels', 'label' => 'Hapus Tingkat Prestasi'],
+            # Document type related permission
+            ['name' => 'read-document-types', 'label' => 'Baca Jenis Dokumen'],
+            ['name' => 'create-document-types', 'label' => 'Buat Jenis Dokumen'],
+            ['name' => 'update-document-types', 'label' => 'Update Jenis Dokumen'],
+            ['name' => 'delete-document-types', 'label' => 'Hapus Jenis Dokumen'],
+            # Cooperation field related permission
+            ['name' => 'read-cooperation-fields', 'label' => 'Baca Bidang Kerjasama'],
+            ['name' => 'create-cooperation-fields', 'label' => 'Buat Bidang Kerjasama'],
+            ['name' => 'update-cooperation-fields', 'label' => 'Update Bidang Kerjasama'],
+            ['name' => 'delete-cooperation-fields', 'label' => 'Hapus Bidang Kerjasama'],
+            # Cooperation type related permission
+            ['name' => 'read-cooperation-types', 'label' => 'Baca Jenis Kerjasama'],
+            ['name' => 'create-cooperation-types', 'label' => 'Buat Jenis Kerjasama'],
+            ['name' => 'update-cooperation-types', 'label' => 'Update Jenis Kerjasama'],
+            ['name' => 'delete-cooperation-types', 'label' => 'Hapus Jenis Kerjasama'],
 
             # Users related permission
             ['name' => 'read-users', 'label' => 'Baca User'],
