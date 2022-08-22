@@ -33,6 +33,9 @@ class RoleSeeder extends Seeder
             'read-achievement-levels', 'create-achievement-levels', 'update-achievement-levels', 'delete-achievement-levels',
             'read-roles', 'create-roles', 'update-roles', 'delete-roles', 'change-permissions',
             'read-users', 'create-users', 'update-users', 'delete-users',
+            'read-document-types', 'create-document-types', 'update-document-types', 'delete-document-types',
+            'read-cooperation-types', 'create-cooperation-types', 'update-cooperation-types', 'delete-cooperation-types',
+            'read-cooperation-fields', 'create-cooperation-fields', 'update-cooperation-fields', 'delete-cooperation-fields',
             'read-settings', 'update-settings',
         ]);
         $adminsitrator->givePermissionTo([
@@ -43,6 +46,9 @@ class RoleSeeder extends Seeder
             'read-achievement-levels', 'create-achievement-levels', 'update-achievement-levels', 'delete-achievement-levels',
             'read-roles', 'create-roles', 'update-roles', 'delete-roles', 'change-permissions',
             'read-users', 'create-users', 'update-users', 'delete-users',
+            'read-document-types', 'create-document-types', 'update-document-types', 'delete-document-types',
+            'read-cooperation-types', 'create-cooperation-types', 'update-cooperation-types', 'delete-cooperation-types',
+            'read-cooperation-fields', 'create-cooperation-fields', 'update-cooperation-fields', 'delete-cooperation-fields',
             'read-settings', 'update-settings',
         ]);
     }

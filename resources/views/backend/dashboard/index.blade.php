@@ -1,6 +1,6 @@
 @extends('backend.layouts.ajax')
 @section('content')
-    <div class="container">
+    {{-- <div class="container">
 
         <div class="row">
             <div class="col-lg-3 col-sm-6 col-12">
@@ -93,5 +93,5 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 @endsection

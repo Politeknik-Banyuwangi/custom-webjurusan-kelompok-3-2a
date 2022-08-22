@@ -14,4 +14,9 @@ class EmployeeType extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function employee()
+    {
+        return $this->hasMany(Employee::class);
+    }
 }

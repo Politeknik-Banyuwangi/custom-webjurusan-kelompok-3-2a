@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\Web\Backend\Achievement\AchievementLevelController;
 use App\Http\Controllers\Web\Backend\Achievement\AchievementTypeController;
+use App\Http\Controllers\Web\Backend\Cooperation\CooperationFieldController;
+use App\Http\Controllers\Web\Backend\Cooperation\CooperationTypeController;
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Web\Backend\Document\DocumentTypeController;
+use App\Http\Controllers\Web\Backend\Employee\EmployeeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
 use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
@@ -51,6 +55,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{employeeType}/update', [EmployeeTypeController::class, 'update'])->name('employee-types.update')->middleware('can:update-employee-types');
             Route::delete('{employeeType}/delete', [EmployeeTypeController::class, 'destroy'])->name('employee-types.delete')->middleware('can:delete-employee-types');
         });
+        // Employee
+        Route::prefix('employees')->middleware('can:read-employees')->group(function () {
+            Route::get('', [EmployeeController::class, 'index'])->name('employees')->middleware('can:read-employees');
+            Route::get('get-data', [EmployeeController::class, 'getData'])->name('employees.get-data')->middleware('can:read-employees');
+            Route::post('store', [EmployeeController::class, 'store'])->name('employees.store')->middleware('can:create-employees');
+            Route::get('{employee}/show', [EmployeeController::class, 'show'])->name('employees.update')->middleware('can:update-employees');
+            Route::post('{employee}/update', [EmployeeController::class, 'update'])->name('employees.update')->middleware('can:update-employees');
+            Route::delete('{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.delete')->middleware('can:delete-employees');
+        });
         // Achievement Type
         Route::prefix('achievement-types')->middleware('can:read-achievement-types')->group(function () {
             Route::get('', [AchievementTypeController::class, 'index'])->name('achievement-types')->middleware('can:read-achievement-types');
@@ -69,7 +82,33 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{achievementLevel}/update', [AchievementLevelController::class, 'update'])->name('achievement-levels.update')->middleware('can:update-achievement-levels');
             Route::delete('{achievementLevel}/delete', [AchievementLevelController::class, 'destroy'])->name('achievement-levels.delete')->middleware('can:delete-achievement-levels');
         });
-
+        // Document Type
+        Route::prefix('document-types')->middleware('can:read-document-types')->group(function () {
+            Route::get('', [DocumentTypeController::class, 'index'])->name('document-types')->middleware('can:read-document-types');
+            Route::get('get-data', [DocumentTypeController::class, 'getData'])->name('document-types.get-data')->middleware('can:read-document-types');
+            Route::post('store', [DocumentTypeController::class, 'store'])->name('document-types.store')->middleware('can:create-document-types');
+            Route::get('{documentType}/show', [DocumentTypeController::class, 'show'])->name('document-types.update')->middleware('can:update-document-types');
+            Route::post('{documentType}/update', [DocumentTypeController::class, 'update'])->name('document-types.update')->middleware('can:update-document-types');
+            Route::delete('{documentType}/delete', [DocumentTypeController::class, 'destroy'])->name('document-types.delete')->middleware('can:delete-document-types');
+        });
+        // Cooperation Type
+        Route::prefix('cooperation-types')->middleware('can:read-cooperation-types')->group(function () {
+            Route::get('', [CooperationTypeController::class, 'index'])->name('cooperation-types')->middleware('can:read-cooperation-types');
+            Route::get('get-data', [CooperationTypeController::class, 'getData'])->name('cooperation-types.get-data')->middleware('can:read-cooperation-types');
+            Route::post('store', [CooperationTypeController::class, 'store'])->name('cooperation-types.store')->middleware('can:create-cooperation-types');
+            Route::get('{cooperationType}/show', [CooperationTypeController::class, 'show'])->name('cooperation-types.update')->middleware('can:update-cooperation-types');
+            Route::post('{cooperationType}/update', [CooperationTypeController::class, 'update'])->name('cooperation-types.update')->middleware('can:update-cooperation-types');
+            Route::delete('{cooperationType}/delete', [CooperationTypeController::class, 'destroy'])->name('cooperation-types.delete')->middleware('can:delete-cooperation-types');
+        });
+        // Cooperation Field
+        Route::prefix('cooperation-fields')->middleware('can:read-cooperation-fields')->group(function () {
+            Route::get('', [CooperationFieldController::class, 'index'])->name('cooperation-fields')->middleware('can:read-cooperation-fields');
+            Route::get('get-data', [CooperationFieldController::class, 'getData'])->name('cooperation-fields.get-data')->middleware('can:read-cooperation-fields');
+            Route::post('store', [CooperationFieldController::class, 'store'])->name('cooperation-fields.store')->middleware('can:create-cooperation-fields');
+            Route::get('{cooperationField}/show', [CooperationFieldController::class, 'show'])->name('cooperation-fields.update')->middleware('can:update-cooperation-fields');
+            Route::post('{cooperationField}/update', [CooperationFieldController::class, 'update'])->name('cooperation-fields.update')->middleware('can:update-cooperation-fields');
+            Route::delete('{cooperationField}/delete', [CooperationFieldController::class, 'destroy'])->name('cooperation-fields.delete')->middleware('can:delete-cooperation-fields');
+        });
         // Roles
         Route::prefix('roles')->middleware('can:read-roles')->group(function () {
             Route::get('', [RoleController::class, 'index'])->name('roles');

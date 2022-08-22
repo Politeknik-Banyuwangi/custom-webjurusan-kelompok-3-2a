@@ -134,7 +134,7 @@ class EmployeeSeeder extends Seeder
                 'identity_number' => '199009052019031024',
                 'name' => 'Sepyan Purnama Kristanto, S.Kom.,M.Kom',
                 'gender' => 'male',
-                'image' => 'sepyan.jpg',
+                'image' => 'sepyan.jpeg',
             ],
             [
                 'employee_type_id' => 1,
@@ -158,7 +158,7 @@ class EmployeeSeeder extends Seeder
                 'identity_number' => '199203302019031012',
                 'name' => 'Lutfi Hakim, S.Pd.,M.T',
                 'gender' => 'male',
-                'image' => 'lutfi.jpg',
+                'image' => 'lutfi.jpeg',
             ],
             [
                 'employee_type_id' => 1,
@@ -166,7 +166,7 @@ class EmployeeSeeder extends Seeder
                 'identity_number' => '2010.36.048',
                 'name' => 'Agus Priyo Utomo, S.ST.,M.Tr.Kom',
                 'gender' => 'male',
-                'image' => 'agus.jpg',
+                'image' => 'agus.jpeg',
             ],
             [
                 'employee_type_id' => 1,
@@ -174,7 +174,7 @@ class EmployeeSeeder extends Seeder
                 'identity_number' => '199202272020122019',
                 'name' => 'Ruth Ema Febrita, S.Pd.,M.Kom',
                 'gender' => 'female',
-                'image' => 'ema.jpg',
+                'image' => 'ema.jpeg',
             ],
             [
                 'employee_type_id' => 1,
@@ -190,7 +190,7 @@ class EmployeeSeeder extends Seeder
                 'identity_number' => '199209212020122021',
                 'name' => 'Arum Andary Ratri, S.Si.,M.Si',
                 'gender' => 'female',
-                'image' => 'arum.jpg',
+                'image' => 'arum.jpeg',
             ],
             [
                 'employee_type_id' => 1,
@@ -198,7 +198,7 @@ class EmployeeSeeder extends Seeder
                 'identity_number' => '2021.36.248',
                 'name' => 'Indira Nuansa Ratri, S.M.,M.SM',
                 'gender' => 'female',
-                'image' => 'indira.jpg',
+                'image' => 'indira.jpeg',
             ],
             [
                 'employee_type_id' => 3,
@@ -206,7 +206,7 @@ class EmployeeSeeder extends Seeder
                 'identity_number' => '198711032021212001',
                 'name' => 'Dian Mujiani, S.E',
                 'gender' => 'female',
-                'image' => 'dian.jpg',
+                'image' => 'dian.jpeg',
             ],
             [
                 'employee_type_id' => 2,
