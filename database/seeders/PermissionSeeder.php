@@ -20,6 +20,41 @@ class PermissionSeeder extends Seeder
         $webPermission = collect([
             # Dashboard related permission
             ['name' => 'read-dashboards', 'label' => 'Baca Dashboard'],
+            # Roles related permission
+            ['name' => 'read-roles', 'label' => 'Baca Role'],
+            ['name' => 'create-roles', 'label' => 'Buat Role'],
+            ['name' => 'update-roles', 'label' => 'Update Role'],
+            ['name' => 'delete-roles', 'label' => 'Hapus Role'],
+            ['name' => 'change-permissions', 'label' => 'Edit Hak Akses'],
+            # Employee related permission
+            ['name' => 'read-employees', 'label' => 'Baca Staff'],
+            ['name' => 'create-employees', 'label' => 'Buat Staff'],
+            ['name' => 'update-employees', 'label' => 'Update Staff'],
+            ['name' => 'delete-employees', 'label' => 'Hapus Staff'],
+            # Employee type related permission
+            ['name' => 'read-employee-types', 'label' => 'Baca Jenis Staff'],
+            ['name' => 'create-employee-types', 'label' => 'Buat Jenis Staff'],
+            ['name' => 'update-employee-types', 'label' => 'Update Jenis Staff'],
+            ['name' => 'delete-employee-types', 'label' => 'Hapus Jenis Staff'],
+            # Achievement type related permission
+            ['name' => 'read-achievement-types', 'label' => 'Baca Jenis Prestasi'],
+            ['name' => 'create-achievement-types', 'label' => 'Buat Jenis Prestasi'],
+            ['name' => 'update-achievement-types', 'label' => 'Update Jenis Prestasi'],
+            ['name' => 'delete-achievement-types', 'label' => 'Hapus Jenis Prestasi'],
+            # Achievement level related permission
+            ['name' => 'read-achievement-levels', 'label' => 'Baca Tingkat Prestasi'],
+            ['name' => 'create-achievement-levels', 'label' => 'Buat Tingkat Prestasi'],
+            ['name' => 'update-achievement-levels', 'label' => 'Update Tingkat Prestasi'],
+            ['name' => 'delete-achievement-levels', 'label' => 'Hapus Tingkat Prestasi'],
+
+            # Users related permission
+            ['name' => 'read-users', 'label' => 'Baca User'],
+            ['name' => 'create-users', 'label' => 'Buat User'],
+            ['name' => 'update-users', 'label' => 'Edit User'],
+            ['name' => 'delete-users', 'label' => 'Hapus User'],
+            # Settings related permissions
+            ['name' => 'read-settings', 'label' => 'Akses Pengaturan'],
+            ['name' => 'update-settings', 'label' => 'Perbarui Pengaturan'],
         ]);
 
         $this->insertPermission($webPermission);

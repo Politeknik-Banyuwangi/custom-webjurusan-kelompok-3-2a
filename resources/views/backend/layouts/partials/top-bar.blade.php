@@ -13,8 +13,8 @@
                 <ul class="nav navbar-nav float-right">
                     <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i
                                 class="ficon feather icon-maximize"></i></a></li>
-                    <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
-                            data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span
+                    <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label"
+                            href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span
                                 class="badge badge-pill badge-primary badge-up">5</span></a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
@@ -70,8 +70,8 @@
                                     </div>
                                 </a><a class="d-flex justify-content-between" href="javascript:void(0)">
                                     <div class="media d-flex align-items-start">
-                                        <div class="media-left"><i
-                                                class="feather icon-file font-medium-5 warning"></i></div>
+                                        <div class="media-left"><i class="feather icon-file font-medium-5 warning"></i>
+                                        </div>
                                         <div class="media-body">
                                             <h6 class="warning media-heading">Generate monthly report</h6><small
                                                 class="notification-text">Chocolate cake oat cake tiramisu
@@ -100,7 +100,7 @@
                             <a class="dropdown-item" href="#"><i class="feather icon-lock"></i>
                                 Password</a>
                             @can('read-settings')
-                                <a class="dropdown-item" href="{{ route('admin.settings') }}" data-toggle="ajax"><i
+                                <a class="dropdown-item" href="{{ route('settings') }}" data-toggle="ajax"><i
                                         class="feather icon-settings"></i>
                                     Setting</a>
                             @endcan

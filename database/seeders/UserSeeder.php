@@ -17,13 +17,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         $rootUser = User::create([
-            'userable_type' => null,
-            'userable_id' => null,
             'name' => 'Root',
             'email' => 'root@gmail.com',
             'username' => 'root',
             'password' => Hash::make('root'),
-            'phone_number' => '08123456789',
             'is_active' => true,
         ]);
         $rootUser->assignRole('Developer');
