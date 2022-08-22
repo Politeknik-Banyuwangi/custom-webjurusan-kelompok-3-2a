@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\Backend\Cooperation\CooperationFieldController;
 use App\Http\Controllers\Web\Backend\Cooperation\CooperationTypeController;
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Document\DocumentTypeController;
+use App\Http\Controllers\Web\Backend\Employee\EmployeeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
 use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
@@ -53,6 +54,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('{employeeType}/show', [EmployeeTypeController::class, 'show'])->name('employee-types.update')->middleware('can:update-employee-types');
             Route::post('{employeeType}/update', [EmployeeTypeController::class, 'update'])->name('employee-types.update')->middleware('can:update-employee-types');
             Route::delete('{employeeType}/delete', [EmployeeTypeController::class, 'destroy'])->name('employee-types.delete')->middleware('can:delete-employee-types');
+        });
+        // Employee
+        Route::prefix('employees')->middleware('can:read-employees')->group(function () {
+            Route::get('', [EmployeeController::class, 'index'])->name('employees')->middleware('can:read-employees');
+            Route::get('get-data', [EmployeeController::class, 'getData'])->name('employees.get-data')->middleware('can:read-employees');
+            Route::post('store', [EmployeeController::class, 'store'])->name('employees.store')->middleware('can:create-employees');
+            Route::get('{employee}/show', [EmployeeController::class, 'show'])->name('employees.update')->middleware('can:update-employees');
+            Route::post('{employee}/update', [EmployeeController::class, 'update'])->name('employees.update')->middleware('can:update-employees');
+            Route::delete('{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.delete')->middleware('can:delete-employees');
         });
         // Achievement Type
         Route::prefix('achievement-types')->middleware('can:read-achievement-types')->group(function () {

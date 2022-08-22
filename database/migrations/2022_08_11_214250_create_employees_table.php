@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('identity_number');
             $table->string('name');
             $table->enum('gender', ['male', 'female']);
-            $table->string('image');
+            $table->string('image')->nullable()->default('default.png');
             $table->timestamps();
             $table->foreign('employee_type_id')->references('id')->on('employee_types')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');

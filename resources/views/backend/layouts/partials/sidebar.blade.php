@@ -72,7 +72,7 @@
                             </li>
                         @endcan
                         @can('read-employees')
-                            <li><a href="#" data-toggle="ajax">
+                            <li><a href="{{ route('employees') }}" data-toggle="ajax">
                                     <i class="feather icon-circle"></i><span class="menu-item"
                                         data-i18n="Staff">Staff</span></a>
                             </li>
