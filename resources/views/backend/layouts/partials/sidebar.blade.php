@@ -44,7 +44,7 @@
                     </ul>
                 </li>
             @endcanany
-            @canany(['read-document-types'])
+            @canany(['read-document-types', 'read-documents'])
                 <li class="nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title"
                             data-i18n="Arsip Dokumen">Arsip Dokumen</span></a>
                     <ul class="menu-content">
@@ -54,10 +54,13 @@
                                         Arsip</span></a>
                             </li>
                         @endcan
-                        <li><a href="#" data-toggle="ajax">
+
+                        @can('read-documents')
+                        <li><a href="{{route('documents')}}" data-toggle="ajax">
                                 <i class="feather icon-circle"></i><span class="menu-item" data-i18n="Dokumen Arsip">Dokumen
                                     Arsip</span></a>
                         </li>
+                        @endcan
                     </ul>
                 </li>
             @endcanany

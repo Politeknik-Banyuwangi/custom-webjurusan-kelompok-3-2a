@@ -72,4 +72,9 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    public function document() 
+    {
+        return $this->hasMany(Document::class);
+    }
 }

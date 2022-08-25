@@ -6,13 +6,13 @@ use App\Http\Controllers\Web\Backend\Cooperation\CooperationFieldController;
 use App\Http\Controllers\Web\Backend\Cooperation\CooperationTypeController;
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Document\DocumentTypeController;
+use App\Http\Controllers\Web\Backend\Document\DocumentController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
 use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
 use App\Http\Controllers\Web\Backend\User\UserController;
-use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,6 +91,17 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{documentType}/update', [DocumentTypeController::class, 'update'])->name('document-types.update')->middleware('can:update-document-types');
             Route::delete('{documentType}/delete', [DocumentTypeController::class, 'destroy'])->name('document-types.delete')->middleware('can:delete-document-types');
         });
+
+        // Document
+        Route::prefix('documents')->middleware('can:read-documents')->group(function () {
+            Route::get('', [DocumentController::class, 'index'])->name('documents')->middleware('can:read-documents');
+            Route::get('get-data', [DocumentController::class, 'getData'])->name('documents.get-data')->middleware('can:read-documents');
+            Route::post('store', [DocumentController::class, 'store'])->name('documents.store')->middleware('can:create-documents');
+            Route::get('{document}/show', [DocumentController::class, 'show'])->name('documents.update')->middleware('can:update-documents');
+            Route::post('{document}/update', [DocumentController::class, 'update'])->name('documents.update')->middleware('can:update-documents');
+            Route::delete('{document}/delete', [DocumentController::class, 'destrov'])->name('documents.delete')->middleware('can:delete-documents');
+        });
+
         // Cooperation Type
         Route::prefix('cooperation-types')->middleware('can:read-cooperation-types')->group(function () {
             Route::get('', [CooperationTypeController::class, 'index'])->name('cooperation-types')->middleware('can:read-cooperation-types');

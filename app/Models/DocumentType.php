@@ -14,4 +14,9 @@ class DocumentType extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function document()
+    {
+        return $this->hasMany(Document::class);
+    }
 }
