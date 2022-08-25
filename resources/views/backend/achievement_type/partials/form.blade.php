@@ -12,7 +12,7 @@
                 data-request="ajax" data-success-callback="{{ route('achievement-types') }}">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="">Nama Jenis Prestasi <span class="text-danger">*</span></label>
+                        <label for="">Nama Jenis Prestasi <span class="text-danger">*</span> </label>
                         <input type="text" name="name" id="name" class="form-control"
                             placeholder="Nama Jenis Prestasi" autocomplete="off">
                     </div>

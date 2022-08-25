@@ -70,6 +70,12 @@ class PermissionSeeder extends Seeder
             # Settings related permissions
             ['name' => 'read-settings', 'label' => 'Akses Pengaturan'],
             ['name' => 'update-settings', 'label' => 'Perbarui Pengaturan'],
+
+            # Events related permission
+            ['name' => 'read-events', 'label' => 'Baca Event'],
+            ['name' => 'create-events', 'label' => 'Buat Event'],
+            ['name' => 'update-events', 'label' => 'Edit Event'],
+            ['name' => 'delete-events', 'label' => 'Hapus Event'],
         ]);
 
         $this->insertPermission($webPermission);

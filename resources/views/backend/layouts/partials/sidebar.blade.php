@@ -107,12 +107,15 @@
                     </ul>
                 </li>
             @endcanany
+            @can('read-events')
             <li class=" nav-item">
-                <a data-toggle="ajax" href="#">
+                <a data-toggle="ajax" href="{{ route('events') }}">
                     <i class="feather icon-calendar"></i>
                     <span class="menu-item" data-i18n="Event">Event</span>
                 </a>
             </li>
+            @endcan
+            
             <li class="navigation-header">
                 <span>Site</span>
             </li>

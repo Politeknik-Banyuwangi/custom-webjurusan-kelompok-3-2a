@@ -12,7 +12,7 @@ use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
 use App\Http\Controllers\Web\Backend\User\UserController;
-use App\Http\Controllers\Web\Frontend\Home\HomeController;
+use App\Http\Controllers\Web\Backend\Event\EventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -108,6 +108,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('{cooperationField}/show', [CooperationFieldController::class, 'show'])->name('cooperation-fields.update')->middleware('can:update-cooperation-fields');
             Route::post('{cooperationField}/update', [CooperationFieldController::class, 'update'])->name('cooperation-fields.update')->middleware('can:update-cooperation-fields');
             Route::delete('{cooperationField}/delete', [CooperationFieldController::class, 'destroy'])->name('cooperation-fields.delete')->middleware('can:delete-cooperation-fields');
+        });
+        // Event
+        Route::prefix('events')->middleware('can:read-events')->group(function () {
+            Route::get('', [EventController::class, 'index'])->name('events')->middleware('can:read-events');
+            Route::get('get-data', [EventController::class, 'getData'])->name('events.get-data')->middleware('can:read-events');
+            Route::post('store', [EventController::class, 'store'])->name('events.store')->middleware('can:create-events');
+            Route::get('{event}/show', [EventController::class, 'show'])->name('events.update')->middleware('can:update-events');
+            Route::post('{event}/update', [EventController::class, 'update'])->name('events.update')->middleware('can:update-events');
+            Route::delete('{event}/delete', [EventController::class, 'destroy'])->name('events.delete')->middleware('can:delete-events');
         });
         // Roles
         Route::prefix('roles')->middleware('can:read-roles')->group(function () {

@@ -37,6 +37,7 @@ class RoleSeeder extends Seeder
             'read-cooperation-types', 'create-cooperation-types', 'update-cooperation-types', 'delete-cooperation-types',
             'read-cooperation-fields', 'create-cooperation-fields', 'update-cooperation-fields', 'delete-cooperation-fields',
             'read-settings', 'update-settings',
+            'read-events', 'create-events', 'update-events', 'delete-events',
         ]);
         $adminsitrator->givePermissionTo([
             'read-dashboards',
@@ -50,6 +51,7 @@ class RoleSeeder extends Seeder
             'read-cooperation-types', 'create-cooperation-types', 'update-cooperation-types', 'delete-cooperation-types',
             'read-cooperation-fields', 'create-cooperation-fields', 'update-cooperation-fields', 'delete-cooperation-fields',
             'read-settings', 'update-settings',
+            'read-events', 'create-events', 'update-events', 'delete-events',
         ]);
     }
 }
