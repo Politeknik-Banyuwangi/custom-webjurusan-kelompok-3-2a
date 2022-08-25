@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\Backend\Achievement\AchievementController;
 use App\Http\Controllers\Web\Backend\Achievement\AchievementLevelController;
 use App\Http\Controllers\Web\Backend\Achievement\AchievementTypeController;
 use App\Http\Controllers\Web\Backend\Cooperation\CooperationFieldController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
 use App\Http\Controllers\Web\Backend\User\UserController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,6 +66,17 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{employee}/update', [EmployeeController::class, 'update'])->name('employees.update')->middleware('can:update-employees');
             Route::delete('{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.delete')->middleware('can:delete-employees');
         });
+
+        // Achievement 
+        Route::prefix('achievements')->middleware('can:read-achievements')->group(function () {
+            Route::get('', [AchievementController::class, 'index'])->name('achievements')->middleware('can:read-achievements');
+            Route::get('get-data', [AchievementController::class, 'getData'])->name('achievements.get-data')->middleware('can:read-achievements');
+            Route::post('store', [AchievementController::class, 'store'])->name('achievements.store')->middleware('can:create-achievements');
+            Route::get('{achievement}/show', [AchievementController::class, 'show'])->name('achievements.update')->middleware('can:update-achievements');
+            Route::post('{achievement}/update', [AchievementController::class, 'update'])->name('achievements.update')->middleware('can:update-achievement-levels');
+            Route::delete('{achievement}/delete', [AchievementController::class, 'destroy'])->name('achievements.delete')->middleware('can:delete-achievement-levels');
+        });
+
         // Achievement Type
         Route::prefix('achievement-types')->middleware('can:read-achievement-types')->group(function () {
             Route::get('', [AchievementTypeController::class, 'index'])->name('achievement-types')->middleware('can:read-achievement-types');

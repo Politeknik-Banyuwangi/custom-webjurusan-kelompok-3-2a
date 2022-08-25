@@ -7,10 +7,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <form id="achievementLevelForm" action="{{ route('achievement-levels.store') }}" method="POST"
-                data-request="ajax" data-success-callback="{{ route('achievement-levels') }}">
+            </div>levels') }}">
                 <div class="modal-body">
+            <form id="achievementLevelForm" action="{{ route('achievement-levels.store') }}" method="POST"
+                data-request="ajax" data-success-callback="{{ route('achievement-
                     <div class="form-group">
                         <label for="">Nama Tingkat Prestasi <span class="text-danger">*</span></label>
                         <input type="text" name="name" id="name" class="form-control"

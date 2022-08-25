@@ -70,6 +70,11 @@ class PermissionSeeder extends Seeder
             # Settings related permissions
             ['name' => 'read-settings', 'label' => 'Akses Pengaturan'],
             ['name' => 'update-settings', 'label' => 'Perbarui Pengaturan'],
+            # Achievement related permission
+            ['name' => 'read-achievements','label' => 'Baca Prestasi'],
+            ['name' => 'create-achievements','label' => 'Buat Prestasi'],
+            ['name' => 'update-achievements', 'label' => 'Edit Prestasi'],
+            ['name' => 'delete-achievements', 'label' => 'Hapus Pretasi'],
         ]);
 
         $this->insertPermission($webPermission);

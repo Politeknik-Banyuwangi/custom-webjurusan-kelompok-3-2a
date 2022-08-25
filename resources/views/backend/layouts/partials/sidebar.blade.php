@@ -37,7 +37,7 @@
                                         data-i18n="Tingkat Prestasi">Tingkat Prestasi</span></a>
                             </li>
                         @endcan
-                        <li><a href="#" data-toggle="ajax">
+                        <li><a href="{{route('achievements')}}" data-toggle="ajax">
                                 <i class="feather icon-circle"></i><span class="menu-item"
                                     data-i18n="Prestasi Mahasiswa">Prestasi Mahasiswa</span></a>
                         </li>

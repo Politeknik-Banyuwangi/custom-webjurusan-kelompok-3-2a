@@ -14,4 +14,15 @@ class AchievementLevel extends Model
     use HashidRouting;
     protected $appends = ['hashid'];
     protected $guarded = [];
+
+    public function achievemenetLevel() {
+        return $this->belongsTo(AchievementLevel::class);
+    }
+    public function achievementType() {
+        return $this->belongsTo(AchievementType::class);
+    }
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
+
