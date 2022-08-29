@@ -70,6 +70,8 @@ class PermissionSeeder extends Seeder
             # Settings related permissions
             ['name' => 'read-settings', 'label' => 'Akses Pengaturan'],
             ['name' => 'update-settings', 'label' => 'Perbarui Pengaturan'],
+
+
         ]);
 
         $this->insertPermission($webPermission);
