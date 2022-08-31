@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{ asset('storage/images/logo-poliwangi.png') }}" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{ asset('storage/images/' . getSetting('logo')) }}" type="image/png" sizes="16x16">
     <title>{{ $title }} - {{ getSetting('web_name') }}</title>
     <link rel="stylesheet" href="{{ asset('assets/frontend/assets/css/main.css') }}">
 </head>

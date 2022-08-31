@@ -5,8 +5,9 @@
         <div class="container">
             <nav class="js-mega-menu navbar navbar-expand-md header-nav">
                 <!--logo start-->
-                <a class="navbar-brand pt-0" href="index.html"><img src="{{ asset('storage/images/logo-poliwangi.png') }}"
-                        width="19%" alt="logo" class="img-fluid" /></a>
+                <a class="navbar-brand pt-0" href="index.html"><img
+                        src="{{ asset('storage/images/' . getSetting('logo')) }}" width="19%" alt="logo"
+                        class="img-fluid" /></a>
                 <!--logo end-->
                 <!--responsive toggle button start-->
                 <button type="button" class="navbar-toggler btn" aria-expanded="false" aria-controls="navBar"

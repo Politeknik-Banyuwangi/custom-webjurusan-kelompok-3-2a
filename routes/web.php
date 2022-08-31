@@ -5,6 +5,7 @@ use App\Http\Controllers\Web\Backend\Achievement\AchievementTypeController;
 use App\Http\Controllers\Web\Backend\Cooperation\CooperationFieldController;
 use App\Http\Controllers\Web\Backend\Cooperation\CooperationTypeController;
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Web\Backend\Document\DocumentController;
 use App\Http\Controllers\Web\Backend\Document\DocumentTypeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
@@ -65,6 +66,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('{employee}/show', [EmployeeController::class, 'show'])->name('employees.update')->middleware('can:update-employees');
             Route::post('{employee}/update', [EmployeeController::class, 'update'])->name('employees.update')->middleware('can:update-employees');
             Route::delete('{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.delete')->middleware('can:delete-employees');
+        });
+        // Document
+        Route::prefix('documents')->middleware('can:read-documents')->group(function () {
+            Route::get('', [DocumentController::class, 'index'])->name('documents')->middleware('can:read-documents');
+            Route::get('get-data', [DocumentController::class, 'getData'])->name('documents.get-data')->middleware('can:read-documents');
+            Route::post('store', [DocumentController::class, 'store'])->name('documents.store')->middleware('can:create-documents');
+            Route::get('{document}/show', [DocumentController::class, 'show'])->name('documents.update')->middleware('can:update-documents');
+            Route::post('{document}/update', [DocumentController::class, 'update'])->name('documents.update')->middleware('can:update-documents');
+            Route::delete('{document}/delete', [DocumentController::class, 'destroy'])->name('documents.delete')->middleware('can:delete-documents');
+            Route::get('{document}/update-status', [DocumentController::class, 'updateStatus'])->name('documents.updateStatus')->middleware('can:update-documents');
         });
         // Achievement Type
         Route::prefix('achievement-types')->middleware('can:read-achievement-types')->group(function () {

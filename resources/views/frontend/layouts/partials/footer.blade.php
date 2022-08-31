@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-4 mb-4 mb-md-4 mb-sm-4 mb-lg-0">
                 <a href="#" class="navbar-brand mb-2">
-                    <img src="{{ asset('storage/images/logo-poliwangi.png') }}" width="19%" alt="logo"
+                    <img src="{{ asset('storage/images/' . getSetting('logo')) }}" width="19%" alt="logo"
                         class="img-fluid">
                 </a>
                 <br>
