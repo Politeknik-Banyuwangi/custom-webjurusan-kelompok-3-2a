@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Menu;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,6 +70,13 @@ if (!function_exists('stripCurrencyRequest')) {
         }
 
         return $request;
+    }
+}
+if (!function_exists('getMenu')) {
+    function getMenu($level, $parent)
+    {
+        $menus = Menu::where(['is_active' => true, 'parent' => $parent, 'level' => $level]);
+        return $menus->get();
     }
 }
 if (!function_exists('slugify')) {

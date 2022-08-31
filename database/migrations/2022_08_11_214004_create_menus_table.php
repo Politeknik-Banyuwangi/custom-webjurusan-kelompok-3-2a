@@ -20,9 +20,11 @@ return new class extends Migration
             $table->integer('order');
             $table->boolean('is_parent')->default(false);
             $table->integer('parent');
+            $table->integer('level');
             $table->enum('link_target', ['none', '_blank']);
             $table->boolean('is_footer');
             $table->boolean('is_active');
+            $table->boolean('is_external_link');
             $table->timestamps();
         });
     }
