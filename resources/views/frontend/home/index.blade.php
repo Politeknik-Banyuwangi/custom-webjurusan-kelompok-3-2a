@@ -38,7 +38,7 @@
                               </div>
                               <div class="hosting-promo-content">
                                   <h5 class="h6">Pengumuman</h5>
-                                  <p>Phosfluorescently target viral expedite empowered bleeding sources through.</p>
+                                  <p>Temukan pengumuman dan informasi mengenai jurusan disini.</p>
                                   <a href="#" target="_blank" class="small-text d-inline-flex align-items-center">
                                       <span>Read More</span> <i class="fad fa-arrow-right ml-2"></i>
                                   </a>
@@ -54,7 +54,7 @@
                               </div>
                               <div class="hosting-promo-content">
                                   <h5 class="h6">Event Jurusan</h5>
-                                  <p>Bleeding sources through viral Phosfluorescently target expedite empowered.</p>
+                                  <p>Temukan semua event atau agenda jurusan disini.</p>
                                   <a href="#" target="_blank" class="small-text d-inline-flex align-items-center">
                                       <span>Read More</span> <i class="fad fa-arrow-right ml-2"></i>
                                   </a>
@@ -70,7 +70,7 @@
                               </div>
                               <div class="hosting-promo-content">
                                   <h5 class="h6">Kabar Jurusan</h5>
-                                  <p>Phosfluorescently target viral expedite empowered bleeding sources through.</p>
+                                  <p>Temukan segala update informasi mengenai jurusan disini.</p>
                                   <a href="#" target="_blank" class="small-text d-inline-flex align-items-center">
                                       <span>Read More</span> <i class="fad fa-arrow-right ml-2"></i>
                                   </a>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Web\Frontend\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cooperation;
+use App\Models\Employee;
+use App\Models\EmployeeType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -15,5 +18,23 @@ class HomeController extends Controller
         ];
 
         return view('frontend.home.index', $data);
+    }
+    public function cooperation()
+    {
+        $data = [
+            'title' => 'Kerjasama Industri',
+            'cooperations' => Cooperation::with(['cooperationField', 'cooperationType', 'partner'])->where('is_publish', true)->get()
+        ];
+
+        return view('frontend.home.cooperation', $data);
+    }
+    public function employee()
+    {
+        $data = [
+            'title' => 'Dosen dan Staff',
+            'employees' => EmployeeType::with(['employee'])->get()
+        ];
+
+        return view('frontend.home.employee', $data);
     }
 }

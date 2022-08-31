@@ -89,8 +89,8 @@ class MenuSeeder extends Seeder
                 'is_external_link' => false,
             ],
             [
-                'name' => 'Sumber Daya Manusia',
-                'link' => '/sdm',
+                'name' => 'Dosen dan Staff',
+                'link' => '/staff',
                 'order' => 5,
                 'is_parent' => false,
                 'parent' => 2,

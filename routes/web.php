@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 
 // Front End Route
 Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
+Route::get('/kerjasama-industri', [HomeController::class, 'cooperation'])->name('frontend.cooperation');
+Route::get('/staff', [HomeController::class, 'employee'])->name('frontend.employee');
 
 // Back End Route
 Route::get('auth', function () {
