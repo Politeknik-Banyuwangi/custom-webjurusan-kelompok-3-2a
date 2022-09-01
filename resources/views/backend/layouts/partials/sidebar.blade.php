@@ -44,7 +44,7 @@
                     </ul>
                 </li>
             @endcanany
-            @canany(['read-document-types'])
+            @canany(['read-document-types', 'read-documents'])
                 <li class="nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title"
                             data-i18n="Arsip Dokumen">Arsip Dokumen</span></a>
                     <ul class="menu-content">
@@ -54,10 +54,12 @@
                                         Arsip</span></a>
                             </li>
                         @endcan
-                        <li><a href="#" data-toggle="ajax">
-                                <i class="feather icon-circle"></i><span class="menu-item" data-i18n="Dokumen Arsip">Dokumen
-                                    Arsip</span></a>
-                        </li>
+                        @can('read-documents')
+                            <li><a href="{{ route('documents') }}" data-toggle="ajax">
+                                    <i class="feather icon-circle"></i><span class="menu-item" data-i18n="Dokumen Arsip">Dokumen
+                                        Arsip</span></a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             @endcanany
@@ -80,14 +82,16 @@
                     </ul>
                 </li>
             @endcanany
-            @canany(['read-cooperation-types', 'read-cooperation-fields'])
+            @canany(['read-cooperation-types', 'read-cooperation-fields', 'read-partners'])
                 <li class="nav-item"><a href="#"><i class="feather icon-briefcase"></i><span class="menu-title"
                             data-i18n="Kerja Sama Industri">Kerja Sama Industri</span></a>
                     <ul class="menu-content">
-                        <li><a href="#" data-toggle="ajax">
-                                <i class="feather icon-circle"></i><span class="menu-item"
-                                    data-i18n="Industri">Industri</span></a>
-                        </li>
+                        @can('read-partners')
+                            <li><a href="{{ route('partners') }}" data-toggle="ajax">
+                                    <i class="feather icon-circle"></i><span class="menu-item"
+                                        data-i18n="Industri">Industri</span></a>
+                            </li>
+                        @endcan
                         @can('read-cooperation-fields')
                             <li><a href="{{ route('cooperation-fields') }}" data-toggle="ajax">
                                     <i class="feather icon-circle"></i><span class="menu-item"
@@ -116,12 +120,14 @@
             <li class="navigation-header">
                 <span>Site</span>
             </li>
-            <li class=" nav-item">
-                <a data-toggle="ajax" href="#">
-                    <i class="feather icon-menu"></i>
-                    <span class="menu-item" data-i18n="Menu">Menu</span>
-                </a>
-            </li>
+            @can('read-menus')
+                <li class=" nav-item">
+                    <a data-toggle="ajax" href="{{ route('menus') }}">
+                        <i class="feather icon-menu"></i>
+                        <span class="menu-item" data-i18n="Menu">Menu</span>
+                    </a>
+                </li>
+            @endcan
             <li class=" nav-item">
                 <a data-toggle="ajax" href="#">
                     <i class="feather icon-layout"></i>

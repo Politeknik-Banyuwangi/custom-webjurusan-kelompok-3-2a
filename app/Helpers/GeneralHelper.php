@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Event;
+use App\Models\Menu;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,6 +71,23 @@ if (!function_exists('stripCurrencyRequest')) {
         }
 
         return $request;
+    }
+}
+if (!function_exists('getMenu')) {
+    function getMenu($level, $parent, $showActive = true)
+    {
+        $menus = Menu::where(['parent' => $parent, 'level' => $level]);
+        if ($showActive == true) {
+            $menus->where('is_active', true);
+        }
+        return $menus->get();
+    }
+}
+if (!function_exists('getEvents')) {
+    function getEvents($limit)
+    {
+        $events = Event::where(['is_publish' => true])->orderBy('id', 'DESC')->take($limit);
+        return $events->get();
     }
 }
 if (!function_exists('slugify')) {

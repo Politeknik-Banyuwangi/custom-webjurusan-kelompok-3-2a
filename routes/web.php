@@ -5,9 +5,12 @@ use App\Http\Controllers\Web\Backend\Achievement\AchievementTypeController;
 use App\Http\Controllers\Web\Backend\Cooperation\CooperationFieldController;
 use App\Http\Controllers\Web\Backend\Cooperation\CooperationTypeController;
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Web\Backend\Document\DocumentController;
 use App\Http\Controllers\Web\Backend\Document\DocumentTypeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
+use App\Http\Controllers\Web\Backend\Menu\MenuController;
+use App\Http\Controllers\Web\Backend\Partner\PartnerController;
 use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
@@ -28,6 +31,10 @@ use Illuminate\Support\Facades\Route;
 
 // Front End Route
 Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
+Route::get('/kerjasama-industri', [HomeController::class, 'cooperation'])->name('frontend.cooperation');
+Route::get('/staff', [HomeController::class, 'employee'])->name('frontend.employee');
+Route::get('/dokumen', [HomeController::class, 'document'])->name('frontend.document');
+Route::get('/event/{slug}', [HomeController::class, 'event'])->name('frontend.events');
 
 // Back End Route
 Route::get('auth', function () {
@@ -63,6 +70,26 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('{employee}/show', [EmployeeController::class, 'show'])->name('employees.update')->middleware('can:update-employees');
             Route::post('{employee}/update', [EmployeeController::class, 'update'])->name('employees.update')->middleware('can:update-employees');
             Route::delete('{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.delete')->middleware('can:delete-employees');
+        });
+        // Document
+        Route::prefix('documents')->middleware('can:read-documents')->group(function () {
+            Route::get('', [DocumentController::class, 'index'])->name('documents')->middleware('can:read-documents');
+            Route::get('get-data', [DocumentController::class, 'getData'])->name('documents.get-data')->middleware('can:read-documents');
+            Route::post('store', [DocumentController::class, 'store'])->name('documents.store')->middleware('can:create-documents');
+            Route::get('{document}/show', [DocumentController::class, 'show'])->name('documents.update')->middleware('can:update-documents');
+            Route::post('{document}/update', [DocumentController::class, 'update'])->name('documents.update')->middleware('can:update-documents');
+            Route::delete('{document}/delete', [DocumentController::class, 'destroy'])->name('documents.delete')->middleware('can:delete-documents');
+            Route::get('{document}/update-status', [DocumentController::class, 'updateStatus'])->name('documents.updateStatus')->middleware('can:update-documents');
+        });
+        // Menu
+        Route::prefix('menus')->middleware('can:read-menus')->group(function () {
+            Route::get('', [MenuController::class, 'index'])->name('menus')->middleware('can:read-menus');
+            Route::get('get-data', [MenuController::class, 'getData'])->name('menus.get-data')->middleware('can:read-menus');
+            Route::post('store', [MenuController::class, 'store'])->name('menus.store')->middleware('can:create-menus');
+            Route::get('{menu}/show', [MenuController::class, 'show'])->name('menus.update')->middleware('can:update-menus');
+            Route::post('{menu}/update', [MenuController::class, 'update'])->name('menus.update')->middleware('can:update-menus');
+            Route::delete('{menu}/delete', [MenuController::class, 'destroy'])->name('menus.delete')->middleware('can:delete-menus');
+            Route::get('{menu}/update-status', [MenuController::class, 'updateStatus'])->name('menus.updateStatus')->middleware('can:update-menus');
         });
         // Achievement Type
         Route::prefix('achievement-types')->middleware('can:read-achievement-types')->group(function () {
@@ -108,6 +135,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('{cooperationField}/show', [CooperationFieldController::class, 'show'])->name('cooperation-fields.update')->middleware('can:update-cooperation-fields');
             Route::post('{cooperationField}/update', [CooperationFieldController::class, 'update'])->name('cooperation-fields.update')->middleware('can:update-cooperation-fields');
             Route::delete('{cooperationField}/delete', [CooperationFieldController::class, 'destroy'])->name('cooperation-fields.delete')->middleware('can:delete-cooperation-fields');
+        });
+        // Partners
+        Route::prefix('partners')->middleware('can:read-partners')->group(function () {
+            Route::get('', [PartnerController::class, 'index'])->name('partners')->middleware('can:read-partners');
+            Route::get('get-data', [PartnerController::class, 'getData'])->name('partners.get-data')->middleware('can:read-partners');
+            Route::post('store', [PartnerController::class, 'store'])->name('partners.store')->middleware('can:create-partners');
+            Route::get('{partner}/show', [PartnerController::class, 'show'])->name('partners.update')->middleware('can:update-partners');
+            Route::post('{partner}/update', [PartnerController::class, 'update'])->name('partners.update')->middleware('can:update-partners');
+            Route::delete('{partner}/delete', [PartnerController::class, 'destroy'])->name('partners.delete')->middleware('can:delete-partners');
         });
         // Roles
         Route::prefix('roles')->middleware('can:read-roles')->group(function () {

@@ -15,4 +15,8 @@ class CooperationField extends Model
 
     protected $appends = ['hashid'];
     protected $guarded = [];
+    public function cooperation()
+    {
+        return $this->hasMany(Cooperation::class);
+    }
 }

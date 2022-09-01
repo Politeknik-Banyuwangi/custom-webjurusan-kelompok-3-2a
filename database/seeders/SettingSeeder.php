@@ -21,7 +21,7 @@ class SettingSeeder extends Seeder
                 'group' => 'General',
                 'option' => 'web_name',
                 'label' => 'Nama Website',
-                'value' => 'Teknik Informatika',
+                'value' => 'Politeknik Negeri Banyuwangi',
                 'is_default' => true,
                 'display_suffix' => '',
                 'created_at' => Carbon::now()
