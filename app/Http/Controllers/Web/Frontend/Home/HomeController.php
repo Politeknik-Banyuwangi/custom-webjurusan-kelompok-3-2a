@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Frontend\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cooperation;
+use App\Models\Document;
 use App\Models\Employee;
 use App\Models\EmployeeType;
 use Illuminate\Http\Request;
@@ -32,9 +33,18 @@ class HomeController extends Controller
     {
         $data = [
             'title' => 'Dosen dan Staff',
-            'employees' => EmployeeType::with(['employee'])->get()
+            'employees' => EmployeeType::with(['employee'])->get(),
         ];
 
         return view('frontend.home.employee', $data);
+    }
+    public function document()
+    {
+        $data = [
+            'title' => 'Dokumen',
+            'documents' => Document::with(['documentType'])->where('is_publish', true)->get(),
+        ];
+
+        return view('frontend.home.document', $data);
     }
 }
