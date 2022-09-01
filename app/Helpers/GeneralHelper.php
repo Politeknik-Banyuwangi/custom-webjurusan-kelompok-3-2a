@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use App\Models\Menu;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -80,6 +81,13 @@ if (!function_exists('getMenu')) {
             $menus->where('is_active', true);
         }
         return $menus->get();
+    }
+}
+if (!function_exists('getEvents')) {
+    function getEvents($limit)
+    {
+        $events = Event::where(['is_publish' => true])->orderBy('id', 'DESC')->take($limit);
+        return $events->get();
     }
 }
 if (!function_exists('slugify')) {

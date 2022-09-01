@@ -82,14 +82,16 @@
                     </ul>
                 </li>
             @endcanany
-            @canany(['read-cooperation-types', 'read-cooperation-fields'])
+            @canany(['read-cooperation-types', 'read-cooperation-fields', 'read-partners'])
                 <li class="nav-item"><a href="#"><i class="feather icon-briefcase"></i><span class="menu-title"
                             data-i18n="Kerja Sama Industri">Kerja Sama Industri</span></a>
                     <ul class="menu-content">
-                        <li><a href="#" data-toggle="ajax">
-                                <i class="feather icon-circle"></i><span class="menu-item"
-                                    data-i18n="Industri">Industri</span></a>
-                        </li>
+                        @can('read-partners')
+                            <li><a href="{{ route('partners') }}" data-toggle="ajax">
+                                    <i class="feather icon-circle"></i><span class="menu-item"
+                                        data-i18n="Industri">Industri</span></a>
+                            </li>
+                        @endcan
                         @can('read-cooperation-fields')
                             <li><a href="{{ route('cooperation-fields') }}" data-toggle="ajax">
                                     <i class="feather icon-circle"></i><span class="menu-item"

@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\Backend\Document\DocumentTypeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
 use App\Http\Controllers\Web\Backend\Menu\MenuController;
+use App\Http\Controllers\Web\Backend\Partner\PartnerController;
 use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
@@ -33,6 +34,7 @@ Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
 Route::get('/kerjasama-industri', [HomeController::class, 'cooperation'])->name('frontend.cooperation');
 Route::get('/staff', [HomeController::class, 'employee'])->name('frontend.employee');
 Route::get('/dokumen', [HomeController::class, 'document'])->name('frontend.document');
+Route::get('/event/{slug}', [HomeController::class, 'event'])->name('frontend.events');
 
 // Back End Route
 Route::get('auth', function () {
@@ -133,6 +135,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('{cooperationField}/show', [CooperationFieldController::class, 'show'])->name('cooperation-fields.update')->middleware('can:update-cooperation-fields');
             Route::post('{cooperationField}/update', [CooperationFieldController::class, 'update'])->name('cooperation-fields.update')->middleware('can:update-cooperation-fields');
             Route::delete('{cooperationField}/delete', [CooperationFieldController::class, 'destroy'])->name('cooperation-fields.delete')->middleware('can:delete-cooperation-fields');
+        });
+        // Partners
+        Route::prefix('partners')->middleware('can:read-partners')->group(function () {
+            Route::get('', [PartnerController::class, 'index'])->name('partners')->middleware('can:read-partners');
+            Route::get('get-data', [PartnerController::class, 'getData'])->name('partners.get-data')->middleware('can:read-partners');
+            Route::post('store', [PartnerController::class, 'store'])->name('partners.store')->middleware('can:create-partners');
+            Route::get('{partner}/show', [PartnerController::class, 'show'])->name('partners.update')->middleware('can:update-partners');
+            Route::post('{partner}/update', [PartnerController::class, 'update'])->name('partners.update')->middleware('can:update-partners');
+            Route::delete('{partner}/delete', [PartnerController::class, 'destroy'])->name('partners.delete')->middleware('can:delete-partners');
         });
         // Roles
         Route::prefix('roles')->middleware('can:read-roles')->group(function () {

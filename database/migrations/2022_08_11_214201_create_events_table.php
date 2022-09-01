@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('thumbnail');
+            $table->longText('summary');
             $table->longText('content');
             $table->date('date_start');
             $table->date('date_end');

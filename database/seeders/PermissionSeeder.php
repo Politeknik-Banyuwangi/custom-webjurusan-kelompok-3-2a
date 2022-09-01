@@ -77,6 +77,11 @@ class PermissionSeeder extends Seeder
             ['name' => 'create-menus', 'label' => 'Buat Menu'],
             ['name' => 'update-menus', 'label' => 'Edit Menu'],
             ['name' => 'delete-menus', 'label' => 'Hapus Menu'],
+            # Agency related permission
+            ['name' => 'read-partners', 'label' => 'Baca Industri'],
+            ['name' => 'create-partners', 'label' => 'Buat Industri'],
+            ['name' => 'update-partners', 'label' => 'Edit Industri'],
+            ['name' => 'delete-partners', 'label' => 'Hapus Industri'],
             # Settings related permissions
             ['name' => 'read-settings', 'label' => 'Akses Pengaturan'],
             ['name' => 'update-settings', 'label' => 'Perbarui Pengaturan'],

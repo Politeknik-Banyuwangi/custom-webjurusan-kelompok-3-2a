@@ -7,6 +7,7 @@ use App\Models\Cooperation;
 use App\Models\Document;
 use App\Models\Employee;
 use App\Models\EmployeeType;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -46,5 +47,19 @@ class HomeController extends Controller
         ];
 
         return view('frontend.home.document', $data);
+    }
+    public function event($slug)
+    {
+        $event = Event::where(['slug' => $slug, 'is_publish' => true])->first();
+        if ($event) {
+            $data = [
+                'title' => $event->title,
+                'event' => $event,
+            ];
+
+            return view('frontend.home.event', $data);
+        } else {
+            abort(404);
+        }
     }
 }
