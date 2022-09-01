@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\Backend\Document\DocumentController;
 use App\Http\Controllers\Web\Backend\Document\DocumentTypeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeController;
 use App\Http\Controllers\Web\Backend\Employee\EmployeeTypeController;
+use App\Http\Controllers\Web\Backend\Menu\MenuController;
 use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
@@ -76,6 +77,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::post('{document}/update', [DocumentController::class, 'update'])->name('documents.update')->middleware('can:update-documents');
             Route::delete('{document}/delete', [DocumentController::class, 'destroy'])->name('documents.delete')->middleware('can:delete-documents');
             Route::get('{document}/update-status', [DocumentController::class, 'updateStatus'])->name('documents.updateStatus')->middleware('can:update-documents');
+        });
+        // Menu
+        Route::prefix('menus')->middleware('can:read-menus')->group(function () {
+            Route::get('', [MenuController::class, 'index'])->name('menus')->middleware('can:read-menus');
+            Route::get('get-data', [MenuController::class, 'getData'])->name('menus.get-data')->middleware('can:read-menus');
+            Route::post('store', [MenuController::class, 'store'])->name('menus.store')->middleware('can:create-menus');
+            Route::get('{menu}/show', [MenuController::class, 'show'])->name('menus.update')->middleware('can:update-menus');
+            Route::post('{menu}/update', [MenuController::class, 'update'])->name('menus.update')->middleware('can:update-menus');
+            Route::delete('{menu}/delete', [MenuController::class, 'destroy'])->name('menus.delete')->middleware('can:delete-menus');
+            Route::get('{menu}/update-status', [MenuController::class, 'updateStatus'])->name('menus.updateStatus')->middleware('can:update-menus');
         });
         // Achievement Type
         Route::prefix('achievement-types')->middleware('can:read-achievement-types')->group(function () {

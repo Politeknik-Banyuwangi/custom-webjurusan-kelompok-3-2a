@@ -73,9 +73,12 @@ if (!function_exists('stripCurrencyRequest')) {
     }
 }
 if (!function_exists('getMenu')) {
-    function getMenu($level, $parent)
+    function getMenu($level, $parent, $showActive = true)
     {
-        $menus = Menu::where(['is_active' => true, 'parent' => $parent, 'level' => $level]);
+        $menus = Menu::where(['parent' => $parent, 'level' => $level]);
+        if ($showActive == true) {
+            $menus->where('is_active', true);
+        }
         return $menus->get();
     }
 }

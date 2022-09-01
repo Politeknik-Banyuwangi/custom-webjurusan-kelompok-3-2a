@@ -118,12 +118,14 @@
             <li class="navigation-header">
                 <span>Site</span>
             </li>
-            <li class=" nav-item">
-                <a data-toggle="ajax" href="#">
-                    <i class="feather icon-menu"></i>
-                    <span class="menu-item" data-i18n="Menu">Menu</span>
-                </a>
-            </li>
+            @can('read-menus')
+                <li class=" nav-item">
+                    <a data-toggle="ajax" href="{{ route('menus') }}">
+                        <i class="feather icon-menu"></i>
+                        <span class="menu-item" data-i18n="Menu">Menu</span>
+                    </a>
+                </li>
+            @endcan
             <li class=" nav-item">
                 <a data-toggle="ajax" href="#">
                     <i class="feather icon-layout"></i>

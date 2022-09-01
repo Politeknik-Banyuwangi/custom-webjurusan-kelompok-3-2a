@@ -72,6 +72,11 @@ class PermissionSeeder extends Seeder
             ['name' => 'create-documents', 'label' => 'Buat Dokumen'],
             ['name' => 'update-documents', 'label' => 'Edit Dokumen'],
             ['name' => 'delete-documents', 'label' => 'Hapus Dokumen'],
+            # Menu related permission
+            ['name' => 'read-menus', 'label' => 'Baca Menu'],
+            ['name' => 'create-menus', 'label' => 'Buat Menu'],
+            ['name' => 'update-menus', 'label' => 'Edit Menu'],
+            ['name' => 'delete-menus', 'label' => 'Hapus Menu'],
             # Settings related permissions
             ['name' => 'read-settings', 'label' => 'Akses Pengaturan'],
             ['name' => 'update-settings', 'label' => 'Perbarui Pengaturan'],
