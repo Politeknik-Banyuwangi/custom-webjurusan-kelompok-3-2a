@@ -87,7 +87,7 @@
                             data-i18n="Kerja Sama Industri">Kerja Sama Industri</span></a>
                     <ul class="menu-content">
                         @can('read-partners')
-                            <li><a href="{{ route('partners') }}" data-toggle="ajax">
+                            <li><a href="#" data-toggle="ajax">
                                     <i class="feather icon-circle"></i><span class="menu-item"
                                         data-i18n="Industri">Industri</span></a>
                             </li>
